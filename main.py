@@ -4,14 +4,14 @@ import os
 app = Flask(__name__)
 @app.route('/')
 def home():
-    print('Hello')
+    return 'Hello'
 
-@app.route('/predict/',methods=['POST'])
-def makecalc():
-    data = request.get_json()
-    prediction = np.array2string(model.predict(data))
-
-    return jsonify(prediction)
+# @app.route('/predict/',methods=['POST'])
+# def makecalc():
+#     data = request.get_json()
+#     prediction = np.array2string(model.predict(data))
+#
+#     return jsonify(prediction)
 
 
 if __name__ == '__main__':
