@@ -1,12 +1,17 @@
 from flask import Flask
 import os
 
-example_app = Flask(__name__)
+app = Flask(__name__)
+@app.route('/')
+def home():
+    return render_template('index.html')
 
+@app.route('/predict/',methods=['POST'])
+def makecalc():
+    data = request.get_json()
+    prediction = np.array2string(model.predict(data))
 
-@example_app.route('/')
-def hello_world():
-    return 'Hello Fellows October 2020! You are awesome!!! You rock!'
+    return jsonify(prediction)
 
 
 if __name__ == '__main__':
@@ -15,8 +20,8 @@ if __name__ == '__main__':
 
     if port:
         # 'PORT' variable exists - running on Heroku, listen on external IP and on given by Heroku port
-        example_app.run(host='0.0.0.0', port=int(port))
+        app.run(host='0.0.0.0', port=int(port))
     else:
         # 'PORT' variable doesn't exist, running not on Heroku, presumabely running locally, run with default
         #   values for Flask (listening only on localhost on default Flask port)
-        example_app.run()
+        app.run()
