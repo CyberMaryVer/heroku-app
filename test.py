@@ -36,4 +36,4 @@ def test_many_samples_together(x=values_to_predict, url = 'http://localhost:5000
 
 # test_one_sample()
 
-test_many_samples_together()
+test_many_samples_together(url='https://mytest0000.herokuapp.com/predictm/')

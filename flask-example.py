@@ -6,6 +6,8 @@ import os
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/images/'
+filename = 'finalized_model.sav'
+model = pickle.load(open(filename, 'rb'))
 
 @app.route('/')
 def home():
@@ -27,8 +29,6 @@ def predict_many():
     return jsonify(prediction)
 
 if __name__ == '__main__':
-    filename = 'finalized_model.sav'
-    model = pickle.load(open(filename, 'rb'))
     # Heroku provides environment variable 'PORT' that should be listened on by Flask
     port = os.environ.get('PORT')
 
