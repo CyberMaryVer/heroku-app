@@ -1,1 +1,1 @@
-web: python flask_example.py
+web: gunicorn flask-example:app -b 0.0.0.0:$PORT
