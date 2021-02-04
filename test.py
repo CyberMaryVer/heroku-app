@@ -30,7 +30,9 @@ def test_many_samples_together(x=values_to_predict, url = 'http://localhost:5000
     j_data = json.dumps(data)
     headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
     r = requests.post(url, data=j_data, headers=headers)
-    print(f"Prediction: {r.text}")
+    pred = json.loads(r.text)
+    # print(type(pred))
+    print(f"Prediction: {pred}")
 
 # test_one_sample()
 
